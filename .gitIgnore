@@ -1,0 +1,19 @@
+server/node_modules
+
+uee_bell_mobile/node_modules/
+uee_bell_mobile/.expo/
+uee_bell_mobile/npm-debug.*
+uee_bell_mobile/*.jks
+uee_bell_mobile/*.p8
+uee_bell_mobile/*.p12
+uee_bell_mobile/*.key
+uee_bell_mobile/*.mobileprovision
+uee_bell_mobile/*.orig.*
+uee_bell_mobile/web-build/
+ 
+ 
+# macOS
+uee_bell_mobile/.DS_Store
+
+
+*./log
