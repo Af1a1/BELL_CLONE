@@ -1,12 +1,6 @@
 import * as React from "react";
 import {
   NativeBaseProvider,
-  Box,
-  HStack,
-  VStack,
-  Text,
-  Pressable,
-  Image,
 } from "native-base";
 import theme from "../config/theme";
 

@@ -30,23 +30,39 @@ export default function Footer() {
             let iconName;
 
             if (route.name === "Home") {
-              iconName = 'home';
-              color = focused ? theme.colors.primary.dark : theme.colors.primary.white
+              iconName = "home";
+              color = focused
+                ? theme.colors.primary.dark
+                : theme.colors.primary.white;
             } else if (route.name === "Payment") {
-              iconName = 'cash';
-              color = focused ? theme.colors.primary.dark : theme.colors.primary.white
+              iconName = "cash";
+              color = focused
+                ? theme.colors.primary.dark
+                : theme.colors.primary.white;
             } else if (route.name === "Usage") {
-              iconName = 'chart-pie';
-              color = focused ? theme.colors.primary.dark : theme.colors.primary.white
+              iconName = "chart-pie";
+              color = focused
+                ? theme.colors.primary.dark
+                : theme.colors.primary.white;
             } else if (route.name === "AddOn") {
-              iconName = 'plus-circle';
-              color = focused ? theme.colors.primary.dark : theme.colors.primary.white
+              iconName = "plus-circle";
+              color = focused
+                ? theme.colors.primary.dark
+                : theme.colors.primary.white;
             } else if (route.name === "Profile") {
-              iconName = 'account';
-              color = focused ? theme.colors.primary.dark : theme.colors.primary.white
+              iconName = "account";
+              color = focused
+                ? theme.colors.primary.dark
+                : theme.colors.primary.white;
             }
 
-            return <MaterialCommunityIcons name={iconName} size={size} color={color} />;
+            return (
+              <MaterialCommunityIcons
+                name={iconName}
+                size={size}
+                color={color}
+              />
+            );
           },
           tabBarInactiveBackgroundColor: theme.colors.primary.default,
           tabBarInactiveTintColor: theme.colors.primary.light,

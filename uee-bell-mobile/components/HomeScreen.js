@@ -38,11 +38,11 @@ export default function HomeScreen({ navigation }) {
               alignSelf="flex-start"
               py={2}
               px={3}
-              onPress={() => navigation.navigate('Payment')}
+              onPress={() => navigation.navigate("Payment")}
             >
               <Text
                 textTransform="uppercase"
-                fontSize={'sm'}
+                fontSize={"sm"}
                 fontWeight="bold"
                 color="white"
               >
@@ -52,7 +52,7 @@ export default function HomeScreen({ navigation }) {
           </Box>
           <Image
             source={{
-              uri: 'https://media.vanityfair.com/photos/5ba12e6d42b9d16f4545aa19/3:2/w_1998,h_1332,c_limit/t-Avatar-The-Last-Airbender-Live-Action.jpg',
+              uri: "https://media.vanityfair.com/photos/5ba12e6d42b9d16f4545aa19/3:2/w_1998,h_1332,c_limit/t-Avatar-The-Last-Airbender-Live-Action.jpg",
             }}
             alt="Aang flying and surrounded by clouds"
             height={100}
