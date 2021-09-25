@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import {
   NativeBaseProvider,
   Box,
@@ -7,16 +7,17 @@ import {
   HStack,
   Center,
   Pressable,
-} from "native-base";
+} from 'native-base';
 import {
   Ionicons,
   MaterialCommunityIcons,
   MaterialIcons,
-} from "@expo/vector-icons";
-import theme from "../../config/theme";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import HomeScreen from "../HomeScreen";
-import PaymentScreen from "../PaymentScreen";
+} from '@expo/vector-icons';
+import theme from '../../config/theme';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import HomeScreen from '../HomeScreen';
+import PaymentScreen from '../PaymentScreen';
+import UserProfile from '../UserProfile';
 
 const Tab = createBottomTabNavigator();
 
@@ -29,28 +30,28 @@ export default function Footer() {
           tabBarIcon: ({ focused, color, size }) => {
             let iconName;
 
-            if (route.name === "Home") {
-              iconName = "home";
+            if (route.name === 'Home') {
+              iconName = 'home';
               color = focused
                 ? theme.colors.primary.dark
                 : theme.colors.primary.white;
-            } else if (route.name === "Payment") {
-              iconName = "cash";
+            } else if (route.name === 'Payment') {
+              iconName = 'cash';
               color = focused
                 ? theme.colors.primary.dark
                 : theme.colors.primary.white;
-            } else if (route.name === "Usage") {
-              iconName = "chart-pie";
+            } else if (route.name === 'Usage') {
+              iconName = 'chart-pie';
               color = focused
                 ? theme.colors.primary.dark
                 : theme.colors.primary.white;
-            } else if (route.name === "AddOn") {
-              iconName = "plus-circle";
+            } else if (route.name === 'AddOn') {
+              iconName = 'plus-circle';
               color = focused
                 ? theme.colors.primary.dark
                 : theme.colors.primary.white;
-            } else if (route.name === "Profile") {
-              iconName = "account";
+            } else if (route.name === 'Profile') {
+              iconName = 'account';
               color = focused
                 ? theme.colors.primary.dark
                 : theme.colors.primary.white;
@@ -67,13 +68,16 @@ export default function Footer() {
           tabBarInactiveBackgroundColor: theme.colors.primary.default,
           tabBarInactiveTintColor: theme.colors.primary.light,
           tabBarShowLabel: true,
-        })}
-      >
-        <Tab.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
-        <Tab.Screen name="Payment" component={PaymentScreen} />
-        <Tab.Screen name="Usage" component={PaymentScreen} />
-        <Tab.Screen name="AddOn" component={PaymentScreen} />
-        <Tab.Screen name="Profile" component={PaymentScreen} />
+        })}>
+        <Tab.Screen
+          name='Home'
+          component={HomeScreen}
+          options={{ headerShown: false }}
+        />
+        <Tab.Screen name='Payment' component={PaymentScreen} />
+        <Tab.Screen name='Usage' component={PaymentScreen} />
+        <Tab.Screen name='AddOn' component={PaymentScreen} />
+        <Tab.Screen name='Profile' component={UserProfile} />
       </Tab.Navigator>
     </NativeBaseProvider>
   );
