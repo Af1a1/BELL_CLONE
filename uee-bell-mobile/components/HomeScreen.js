@@ -10,7 +10,7 @@ import {
 } from "native-base";
 import theme from "../config/theme";
 
-export default function HomeScreen() {
+export default function HomeScreen({ navigation }) {
   return (
     <NativeBaseProvider theme={theme}>
       <Box
@@ -38,6 +38,7 @@ export default function HomeScreen() {
               alignSelf="flex-start"
               py={2}
               px={3}
+              onPress={() => navigation.navigate('Payment')}
             >
               <Text
                 textTransform="uppercase"
