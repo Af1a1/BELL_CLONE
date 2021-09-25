@@ -69,7 +69,7 @@ export default function Footer() {
           tabBarShowLabel: true,
         })}
       >
-        <Tab.Screen name="Home" component={HomeScreen} />
+        <Tab.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
         <Tab.Screen name="Payment" component={PaymentScreen} />
         <Tab.Screen name="Usage" component={PaymentScreen} />
         <Tab.Screen name="AddOn" component={PaymentScreen} />
