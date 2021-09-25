@@ -10,6 +10,7 @@ import {
   Button,
   NativeBaseProvider,
   Modal,
+  Spacer,
 } from 'native-base';
 import theme from '../config/theme';
 import { useState } from 'react';
@@ -46,14 +47,16 @@ export default function AddPackages() {
                 mr='5'>
                 30 GB
               </Text>
+              <Spacer />
               <Center>
-                <AddIcon color='white' size='4' />
+                <AddIcon color='white' size='7' mr='5' />
               </Center>
             </Flex>
             <Flex direction='row'>
               <Text fontWeight='300' color='white' ml='-0.5' mb='1'>
                 Meet Lite (Zoom, Teams, +)
               </Text>
+              <Spacer />
               <Text
                 fontWeight='300'
                 placement='right'

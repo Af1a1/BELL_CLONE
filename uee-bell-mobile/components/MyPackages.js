@@ -13,9 +13,11 @@ import {
   NativeBaseProvider,
   Modal,
   FormControl,
+  Spacer,
 } from 'native-base';
 import theme from '../config/theme';
 import { useState } from 'react';
+import CommonButton from './shared/CommonButton';
 export default function MyPackages() {
   const [showModal, setShowModal] = useState(false);
   const [showModal2, setShowModal2] = useState(false);
@@ -48,10 +50,10 @@ export default function MyPackages() {
                   7 d 2 hours more
                 </Text>
               </Flex>
+              <Spacer />
               <Button
                 borderRightRadius={10}
                 position='right'
-                ml='130'
                 px='5'
                 py='8.5'
                 onPress={() => setShowModal(true)}
