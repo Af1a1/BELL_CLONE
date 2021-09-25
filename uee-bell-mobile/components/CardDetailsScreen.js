@@ -1,16 +1,16 @@
 import * as React from "react";
 import {
   Box, FormControl, Icon, Input,
-  NativeBaseProvider, ScrollView, Stack, Text, Checkbox,
+  NativeBaseProvider, ScrollView, Stack, Text, Spacer, Flex, View
 } from "native-base";
 import theme from "../config/theme";
 import Card from "./shared/Card";
-import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
+import { MaterialIcons } from "@expo/vector-icons";
 import CommonButton from "./shared/CommonButton";
 import { useState } from "react";
 
 export default function CardDetailsScreen({ navigation }) {
-
+  const [date, setDate] = useState(new Date(1598051730000));
   const [groupValue, setGroupValue] = useState([])
 
   return (
@@ -45,36 +45,24 @@ export default function CardDetailsScreen({ navigation }) {
                   />
                 } _focus={{ border: `1.5px solid ${theme.colors.primary.dark}` }} />
               </FormControl>
-              <Checkbox.Group
-                mt="2"
-                colorScheme="green"
-                accessibilityLabel="choose multiple items"
-                onChange={(values) => {
-                  setGroupValue(values || [])
-                }}
-                alignItems="flex-start"
-              >
-                <Checkbox colorScheme={ theme.colors.primary.default } _checked={{backgroundColor:theme.colors.primary.dark}} value="Visa" size="sm" my="1" mr="3" outlineColor={ theme.colors.primary.default }>
-                  <Icon
-                    as={<MaterialCommunityIcons name="credit-card" />}
-                    size={5}
-                    px="2"
-                    color={ theme.colors.primary.dark }
-                  /> <Text fontSize="sm">
-                  Visa
-                </Text>
-                </Checkbox>
-                <Checkbox value="Amex" my="1" colorScheme={ theme.colors.primary.default } _checked={{backgroundColor:theme.colors.primary.dark}} >
-                  <Icon
-                    as={<MaterialCommunityIcons name="id-card" />}
-                    size={5}
-                    px="2"
-                    color={ theme.colors.primary.dark }
-                  /> <Text fontSize="sm">
-                  Amex
-                </Text>
-                </Checkbox>
-              </Checkbox.Group>
+              <Flex direction="row" mb="3">
+                <View style={{ width: '150px' }}>
+                  <FormControl.Label>Expiration Date</FormControl.Label>
+                  <Input type="date" placeholder="Date"  name="amount" InputLeftElement={
+                    <Icon
+                      as={<MaterialIcons name="calendar-today" />}
+                      size={5}
+                      ml="2"
+                      color="muted.400"
+                    />
+                  } _focus={{ border: `1.5px solid ${theme.colors.primary.dark}` }} />
+                </View>
+                <Spacer />
+                <View>
+                  <FormControl.Label ml="-1" _text={{ align:'left', alignItems: 'left', textAlign: 'left' }}>CVN</FormControl.Label>
+                  <Input type="number" placeholder="CVN"  name="cvn" _focus={{ border: `1.5px solid ${theme.colors.primary.dark}` }} />
+                </View>
+              </Flex>
               <Box
                 my="3"
                 p="5"
@@ -94,7 +82,7 @@ export default function CardDetailsScreen({ navigation }) {
                   Rs 1000
                 </Text>
               </Box>
-              <CommonButton navigation={navigation} text="Pay Now" route="Card Details" />
+              <CommonButton navigation={navigation} text="Confirm Payment" route="Card Details" />
             </Box>
           </Stack>
         </ScrollView>

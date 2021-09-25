@@ -1,7 +1,7 @@
 import * as React from "react";
 import {
   Box, FormControl, Icon, Input,
-  NativeBaseProvider, ScrollView, Stack, Text, Checkbox,
+  NativeBaseProvider, ScrollView, Stack, Text, Checkbox, Divider
 } from "native-base";
 import theme from "../config/theme";
 import Card from "./shared/Card";
@@ -128,7 +128,7 @@ export default function PaymentScreen({ navigation }) {
               <CommonButton
                 navigation={navigation}
                 text="Pay Now"
-                route="Card Details"
+                route="Payment History"
               />
             </Box>
           </Stack>
