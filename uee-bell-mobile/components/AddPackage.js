@@ -13,8 +13,10 @@ import {
   Spacer,
 } from 'native-base';
 import theme from '../config/theme';
+import { StyleSheet } from 'react-native';
+import { flex, right } from 'styled-system';
 import { useState } from 'react';
-export default function AddPackages() {
+export default function AddPackages({ navigation }) {
   const [showModal, setShowModal] = useState(false);
   return (
     <NativeBaseProvider theme={theme}>
@@ -49,7 +51,7 @@ export default function AddPackages() {
               </Text>
               <Spacer />
               <Center>
-                <AddIcon color='white' size='7' mr='5' />
+                <AddIcon color='white' size='6' mr='5' />
               </Center>
             </Flex>
             <Flex direction='row'>
@@ -61,7 +63,7 @@ export default function AddPackages() {
                 fontWeight='300'
                 placement='right'
                 color='white'
-                ml='-0.5'
+                mr='5'
                 mb='1'
                 textAlign='right'>
                 RS 190
@@ -79,14 +81,14 @@ export default function AddPackages() {
             <Modal.Footer>
               <Button.Group space={5}>
                 <Button
-                  bg={theme.colors.primary.default}
+                  style={styles.button}
                   onPress={() => {
                     setShowModal(false);
                   }}>
                   Add to bill
                 </Button>
                 <Button
-                  bg={theme.colors.primary.default}
+                  style={styles.button}
                   onPress={() => {
                     setShowModal(false);
                   }}>
@@ -100,3 +102,22 @@ export default function AddPackages() {
     </NativeBaseProvider>
   );
 }
+
+const styles = StyleSheet.create({
+  wrapper: {
+    marginTop: 'auto',
+    marginBottom: 0,
+    marginRight: 0,
+    marginLeft: 'auto',
+  },
+  button: {
+    float: right,
+    align: right,
+    display: flex,
+    padding: 10,
+    backgroundImage: 'linear-gradient(90deg, #283D87 3.87%, #5373E5 97.42%)',
+    boxShadow: '0px 2px 10px rgba(0, 0, 0, 0.25)',
+    borderRadius: '20px',
+    transform: 'matrix(1, 0, 0, 1, 0, 0)',
+  },
+});

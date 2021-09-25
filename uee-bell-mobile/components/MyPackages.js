@@ -17,8 +17,10 @@ import {
 } from 'native-base';
 import theme from '../config/theme';
 import { useState } from 'react';
+import { StyleSheet } from 'react-native';
+import { flex, right } from 'styled-system';
 import CommonButton from './shared/CommonButton';
-export default function MyPackages() {
+export default function MyPackages({ navigation }) {
   const [showModal, setShowModal] = useState(false);
   const [showModal2, setShowModal2] = useState(false);
   return (
@@ -65,6 +67,7 @@ export default function MyPackages() {
         </Box>
         <Box position='relative' h={100} w='100%'>
           <Fab
+            onPress={() => navigation.navigate('Add Package')}
             bg={theme.colors.primary.default}
             position='absolute'
             size='sm'
@@ -81,15 +84,14 @@ export default function MyPackages() {
             <Modal.Footer>
               <Button.Group space={5}>
                 <Button
-                  bg={theme.colors.primary.default}
-                  color='white'
+                  style={styles.button}
                   onPress={() => {
                     setShowModal(false);
                   }}>
                   Cancel
                 </Button>
                 <Button
-                  bg={theme.colors.primary.default}
+                  style={styles.button}
                   onPress={() => {
                     setShowModal(false);
                     setShowModal2(true);
@@ -112,7 +114,7 @@ export default function MyPackages() {
             <Modal.Footer>
               <Button.Group space={5}>
                 <Button
-                  bg={theme.colors.primary.default}
+                  style={styles.button}
                   onPress={() => {
                     setShowModal2(false);
                   }}>
@@ -126,3 +128,22 @@ export default function MyPackages() {
     </NativeBaseProvider>
   );
 }
+
+const styles = StyleSheet.create({
+  wrapper: {
+    marginTop: 'auto',
+    marginBottom: 0,
+    marginRight: 0,
+    marginLeft: 'auto',
+  },
+  button: {
+    float: right,
+    align: right,
+    display: flex,
+    padding: 10,
+    backgroundImage: 'linear-gradient(90deg, #283D87 3.87%, #5373E5 97.42%)',
+    boxShadow: '0px 2px 10px rgba(0, 0, 0, 0.25)',
+    borderRadius: '20px',
+    transform: 'matrix(1, 0, 0, 1, 0, 0)',
+  },
+});

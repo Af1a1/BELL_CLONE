@@ -77,7 +77,7 @@ export default function Footer() {
         />
         <Tab.Screen name='Payment' component={PaymentScreen} />
         <Tab.Screen name='Usage' component={PaymentScreen} />
-        <Tab.Screen name='My Packages' component={AddPackages} />
+        <Tab.Screen name='My Packages' component={MyPackages} />
         <Tab.Screen name='Profile' component={PaymentScreen} />
       </Tab.Navigator>
     </NativeBaseProvider>
