@@ -10,10 +10,11 @@ uee_bell_mobile/*.key
 uee_bell_mobile/*.mobileprovision
 uee_bell_mobile/*.orig.*
 uee_bell_mobile/web-build/
- 
- 
+
+
 # macOS
 uee_bell_mobile/.DS_Store
 
 
-*./log
+*.log
+/.idea
