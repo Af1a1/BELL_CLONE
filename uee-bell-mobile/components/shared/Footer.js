@@ -6,7 +6,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from '../HomeScreen';
 import PaymentScreen from '../PaymentScreen';
 import UserProfile from '../UserProfile';
-
+import AddPackages from '../AddPackage';
+import MyPackages from '../MyPackages';
 const Tab = createBottomTabNavigator();
 
 export default function Footer() {
@@ -32,7 +33,7 @@ export default function Footer() {
               color = focused
                 ? theme.colors.primary.dark
                 : theme.colors.primary.white;
-            } else if (route.name === 'AddOn') {
+            } else if (route.name === 'My Packages') {
               iconName = 'plus-circle';
               color = focused
                 ? theme.colors.primary.dark
@@ -63,7 +64,7 @@ export default function Footer() {
         />
         <Tab.Screen name='Payment' component={PaymentScreen} />
         <Tab.Screen name='Usage' component={PaymentScreen} />
-        <Tab.Screen name='AddOn' component={PaymentScreen} />
+        <Tab.Screen name='My Packages' component={MyPackages} />
         <Tab.Screen name='Profile' component={UserProfile} />
       </Tab.Navigator>
     </NativeBaseProvider>
