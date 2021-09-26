@@ -18,6 +18,7 @@ import {
 import theme from '../config/theme';
 import { useState } from 'react';
 import { StyleSheet } from 'react-native';
+import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 import { flex, right } from 'styled-system';
 import CommonButton from './shared/CommonButton';
 export default function MyPackages({ navigation }) {
@@ -57,9 +58,21 @@ export default function MyPackages({ navigation }) {
                     {pack.name}
                   </Text>
                   <Text color='white' ml='-0.5' mb='1'>
+                    <Icon
+                      as={<MaterialIcons name='bar-chart' />}
+                      size={3}
+                      px='1'
+                      color={theme.colors.primary.dark}
+                    />
                     {pack.data}
                   </Text>
                   <Text color='white' ml='-0.5' mb='1'>
+                    <Icon
+                      as={<MaterialIcons name='timer' />}
+                      size={3}
+                      px='1'
+                      color={theme.colors.primary.dark}
+                    />
                     {pack.hours}
                   </Text>
                 </Flex>
