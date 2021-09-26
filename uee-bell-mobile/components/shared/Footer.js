@@ -1,29 +1,16 @@
 import React, { useState } from 'react';
-import {
-  NativeBaseProvider,
-  Box,
-  Text,
-  Icon,
-  HStack,
-  Center,
-  Pressable,
-} from 'native-base';
-import {
-  Ionicons,
-  MaterialCommunityIcons,
-  MaterialIcons,
-} from '@expo/vector-icons';
+import { NativeBaseProvider } from 'native-base';
+import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 import theme from '../../config/theme';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from '../HomeScreen';
 import PaymentScreen from '../PaymentScreen';
+import UserProfile from '../UserProfile';
 import AddPackages from '../AddPackage';
 import MyPackages from '../MyPackages';
-
 const Tab = createBottomTabNavigator();
 
 export default function Footer() {
-  const [selected, setSelected] = useState(1);
   return (
     <NativeBaseProvider theme={theme}>
       <Tab.Navigator
@@ -78,7 +65,7 @@ export default function Footer() {
         <Tab.Screen name='Payment' component={PaymentScreen} />
         <Tab.Screen name='Usage' component={PaymentScreen} />
         <Tab.Screen name='My Packages' component={MyPackages} />
-        <Tab.Screen name='Profile' component={PaymentScreen} />
+        <Tab.Screen name='Profile' component={UserProfile} />
       </Tab.Navigator>
     </NativeBaseProvider>
   );
