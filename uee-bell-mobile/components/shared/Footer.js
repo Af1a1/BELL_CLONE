@@ -17,6 +17,7 @@ import theme from "../../config/theme";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import HomeScreen from "../HomeScreen";
 import PaymentScreen from "../PaymentScreen";
+import DataUsageHome from "../DataUsage/DataUsageHome";
 
 const Tab = createBottomTabNavigator();
 
@@ -71,7 +72,7 @@ export default function Footer() {
       >
         <Tab.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
         <Tab.Screen name="Payment" component={PaymentScreen} />
-        <Tab.Screen name="Usage" component={PaymentScreen} />
+        <Tab.Screen name="Usage" component={DataUsageHome} />
         <Tab.Screen name="AddOn" component={PaymentScreen} />
         <Tab.Screen name="Profile" component={PaymentScreen} />
       </Tab.Navigator>
