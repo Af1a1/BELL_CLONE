@@ -1,16 +1,20 @@
-import React from "react";
-import { Button, View } from "native-base";
-import { StyleSheet } from "react-native";
-import { flex, right } from "styled-system";
+import React from 'react';
+import { Button, View } from 'native-base';
+import { StyleSheet } from 'react-native';
+import { flex, right } from 'styled-system';
 
 const CommonButton = ({ route, text, navigation }) => {
-
   return (
-    <View style={styles.wrapper} >
-      <Button my='3' style={styles.container} onPress={() => navigation.navigate(route)}>{ text }</Button>
+    <View style={styles.wrapper}>
+      <Button
+        my='3'
+        style={styles.container}
+        onPress={() => navigation.navigate(route)}>
+        {text}
+      </Button>
     </View>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   wrapper: {
