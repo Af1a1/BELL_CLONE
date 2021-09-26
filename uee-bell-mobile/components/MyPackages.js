@@ -23,48 +23,67 @@ import CommonButton from './shared/CommonButton';
 export default function MyPackages({ navigation }) {
   const [showModal, setShowModal] = useState(false);
   const [showModal2, setShowModal2] = useState(false);
+  const data = [
+    {
+      name: 'Home Schooling & WFH',
+      data: '13.5 GB Remaining',
+      hours: '7 d 2 hours more',
+    },
+    {
+      name: 'Messaging',
+      data: '6.4 GB Remaining',
+      hours: '10 d 8 hours more',
+    },
+    {
+      name: 'YouTube',
+      data: '7.0 GB Remaining',
+      hours: '4 d 1 hours more',
+    },
+  ];
   return (
     <NativeBaseProvider theme={theme}>
       <>
-        <Box
-          bg={theme.colors.primary.default}
-          m='3'
-          rounded='xl'
-          _text={{
-            fontWeight: 'medium',
-            letterSpacing: 'lg',
-          }}>
-          <Stack pl='4' space={2}>
-            <Flex direction='row'>
-              <Flex direction='column'>
-                <Text
-                  fontWeight='300'
-                  color='white'
-                  fontSize='md'
-                  ml='-0.5'
-                  mt='1'>
-                  Home Schooling & WFH
-                </Text>
-                <Text fontWeight='300' color='white' ml='-0.5' mb='1'>
-                  13.5 GB Remaining
-                </Text>
-                <Text fontWeight='300' color='white' ml='-0.5' mb='1'>
-                  7 d 2 hours more
-                </Text>
+        {data.map((pack, index) => (
+          <Box
+            bg={theme.colors.primary.default}
+            m='3'
+            rounded='xl'
+            _text={{
+              fontWeight: 'medium',
+              letterSpacing: 'lg',
+            }}>
+            <Stack pl='4' space={2}>
+              <Flex direction='row'>
+                <Flex direction='column'>
+                  <Text
+                    fontWeight='300'
+                    color='white'
+                    fontSize='md'
+                    ml='-0.5'
+                    mt='1'>
+                    {pack.name}
+                  </Text>
+                  <Text fontWeight='300' color='white' ml='-0.5' mb='1'>
+                    {pack.data}
+                  </Text>
+                  <Text fontWeight='300' color='white' ml='-0.5' mb='1'>
+                    {pack.hours}
+                  </Text>
+                </Flex>
+                <Spacer />
+                <Button
+                  borderRightRadius={10}
+                  position='right'
+                  px='5'
+                  py='8.5'
+                  onPress={() => setShowModal(true)}
+                  bg={theme.colors.primary.dark}>
+                  <Text color='white'>Deactivate</Text>
+                </Button>
               </Flex>
-              <Spacer />
-              <Button
-                borderRightRadius={10}
-                position='right'
-                px='5'
-                py='8.5'
-                onPress={() => setShowModal(true)}
-                bg={theme.colors.primary.dark}>
-                <Text color='white'>Deactivate</Text>
-              </Button>
-            </Flex>
-          </Stack>
-        </Box>
+            </Stack>
+          </Box>
+        ))}
         <Box position='relative' h={100} w='100%'>
           <Fab
             onPress={() => navigation.navigate('Add Package')}
