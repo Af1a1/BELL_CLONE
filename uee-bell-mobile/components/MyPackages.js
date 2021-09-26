@@ -39,6 +39,11 @@ export default function MyPackages({ navigation }) {
       data: '7.0 GB Remaining',
       hours: '4 d 1 hours more',
     },
+    {
+      name: 'Gaming',
+      data: '3.5 GB Remaining',
+      hours: '6 d 1 hours more',
+    },
   ];
   return (
     <NativeBaseProvider theme={theme}>
@@ -84,7 +89,7 @@ export default function MyPackages({ navigation }) {
             </Stack>
           </Box>
         ))}
-        <Box position='relative' h={100} w='100%'>
+        <Box position='relative' h={70} w='70%'>
           <Fab
             onPress={() => navigation.navigate('Add Package')}
             bg={theme.colors.primary.default}
