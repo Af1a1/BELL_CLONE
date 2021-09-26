@@ -18,59 +18,98 @@ import { flex, right } from 'styled-system';
 import { useState } from 'react';
 export default function AddPackages({ navigation }) {
   const [showModal, setShowModal] = useState(false);
+  const data = [
+    {
+      name: 'Home Schooling & WFH',
+      data: '30 GB',
+      package: 'Meet Lite(Zoom, Teams, +)',
+      amount: 'RS 190',
+    },
+    {
+      name: 'Home Schooling & WFH',
+      data: '100 GB',
+      package: 'Meet Lite(Zoom, Teams, +)',
+      amount: 'RS 490',
+    },
+    {
+      name: 'YouTube',
+      data: '15 GB',
+      package: 'YouTube(7D)',
+      amount: 'RS 190',
+    },
+    {
+      name: 'Gaming',
+      data: '30 GB',
+      package: 'Game Lite',
+      amount: 'RS 490',
+    },
+    {
+      name: 'Messaging',
+      data: '10 GB',
+      package: 'Messenger(WhatsApp, Messenger, +)',
+      amount: 'RS 190',
+    },
+  ];
   return (
     <NativeBaseProvider theme={theme}>
       <>
-        <Box
-          bg={theme.colors.primary.default}
-          m='3'
-          p='1'
-          rounded='xl'
-          _text={{
-            fontWeight: 'medium',
-            letterSpacing: 'lg',
-          }}>
-          <Stack
-            pl='4'
-            space={2}
-            onClick={() => {
-              setShowModal(true);
+        {data.map((pack, index) => (
+          <Box
+            bg={theme.colors.primary.default}
+            m='3'
+            p='1'
+            rounded='xl'
+            _text={{
+              fontWeight: 'medium',
+              letterSpacing: 'lg',
             }}>
-            <Text fontWeight='300' color='white' fontSize='s' ml='-0.5' mt='1'>
-              Home Schooling & WFH
-            </Text>
-            <Flex direction='row'>
-              <Text
-                fontWeight='500'
-                color='white'
-                pl='4'
-                fontSize='2xl'
-                ml='-1'
-                mr='5'>
-                30 GB
-              </Text>
-              <Spacer />
-              <Center>
-                <AddIcon color='white' size='6' mr='5' />
-              </Center>
-            </Flex>
-            <Flex direction='row'>
-              <Text fontWeight='300' color='white' ml='-0.5' mb='1'>
-                Meet Lite (Zoom, Teams, +)
-              </Text>
-              <Spacer />
+            <Stack
+              pl='4'
+              space={2}
+              onClick={() => {
+                setShowModal(true);
+              }}>
               <Text
                 fontWeight='300'
-                placement='right'
                 color='white'
-                mr='5'
-                mb='1'
-                textAlign='right'>
-                RS 190
+                fontSize='s'
+                ml='-0.5'
+                mt='1'>
+                {pack.name}
               </Text>
-            </Flex>
-          </Stack>
-        </Box>
+              <Flex direction='row'>
+                <Text
+                  fontWeight='500'
+                  color='white'
+                  pl='4'
+                  fontSize='2xl'
+                  ml='-1'
+                  mr='5'>
+                  {pack.data}
+                </Text>
+                <Spacer />
+                <Center>
+                  <AddIcon color='white' size='6' mr='5' />
+                </Center>
+              </Flex>
+              <Flex direction='row'>
+                <Text fontWeight='300' color='white' ml='-0.5' mb='1'>
+                  {pack.package}
+                </Text>
+                <Spacer />
+                <Text
+                  fontWeight='300'
+                  placement='right'
+                  color='white'
+                  mr='5'
+                  mb='1'
+                  textAlign='right'>
+                  {pack.amount}
+                </Text>
+              </Flex>
+            </Stack>
+          </Box>
+        ))}
         <Modal isOpen={showModal} onClose={() => setShowModal(false)}>
           <Modal.Content maxWidth='400px'>
             <Modal.CloseButton />
