@@ -1,9 +1,6 @@
 import * as React from 'react';
 import {
   Box,
-  FormControl,
-  Icon,
-  Input,
   NativeBaseProvider,
   ScrollView,
   Stack,
@@ -16,9 +13,8 @@ import {
 } from 'native-base';
 import theme from '../../config/theme';
 import Card from '../shared/Card';
-import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
-import CommonButton from '../shared/CommonButton';
 import { useState } from 'react';
+import CircularProgress from 'react-native-circular-progress-indicator';
 
 export default function DataUsage({ navigation }) {
   const [groupValue, setGroupValue] = useState([]);
@@ -32,25 +28,52 @@ export default function DataUsage({ navigation }) {
         }}
       >
         <VStack space={4} alignItems="center">
-          <Text  bold fontSize="lg" w="100%" p={5}>Day Time Data</Text>
-          <Center w="100%">
-            <Text>chart</Text>
-          </Center>
-            <Spacer />
+          <Text bold fontSize="lg" w="100%" p={5}>
+            Day Time Data
+          </Text>
+          <Flex w="100%" p="5" align="center" justify="center" w="100%">
+            <CircularProgress
+              radius={90}
+              value={35}
+              maxValue={75}
+              textColor="#222"
+              fontSize={20}
+              valueSuffix={'GB'}
+              inActiveStrokeColor={'#2ecc71'}
+              inActiveStrokeOpacity={0.2}
+              inActiveStrokeWidth={6}
+              duration={3000}
+            />
+          </Flex>
+          <Spacer />
           <Flex w="100%" direction="row" p="5" align="center" justify="center">
             <Spacer />
             <Flex direction="column" align="center" justify="center">
-              <Text w="100%" bold fontSize="2xl" color={theme.colors.primary.dark}>
+              <Text
+                w="100%"
+                bold
+                fontSize="2xl"
+                color={theme.colors.primary.dark}
+              >
                 35.75 GB
               </Text>
-              <Center w="100%" color={theme.colors.primary.dark}>Remaining data</Center>
+              <Center w="100%" color={theme.colors.primary.dark}>
+                Remaining data
+              </Center>
             </Flex>
             <Spacer />
             <Flex direction="column" align="center" justify="center">
-              <Text bold fontSize="2xl" w="100%" color={theme.colors.primary.default}>
+              <Text
+                bold
+                fontSize="2xl"
+                w="100%"
+                color={theme.colors.primary.default}
+              >
                 5.75 GB
               </Text>
-              <Center w="100%" color={theme.colors.primary.default}>Used data</Center>
+              <Center w="100%" color={theme.colors.primary.default}>
+                Used data
+              </Center>
             </Flex>
             <Spacer />
           </Flex>
