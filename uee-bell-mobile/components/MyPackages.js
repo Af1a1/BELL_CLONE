@@ -18,6 +18,7 @@ import {
 import theme from '../config/theme';
 import { useState } from 'react';
 import { StyleSheet } from 'react-native';
+import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 import { flex, right } from 'styled-system';
 import CommonButton from './shared/CommonButton';
 export default function MyPackages({ navigation }) {
@@ -39,34 +40,39 @@ export default function MyPackages({ navigation }) {
       data: '7.0 GB Remaining',
       hours: '4 d 1 hours more',
     },
+    {
+      name: 'Gaming',
+      data: '3.5 GB Remaining',
+      hours: '6 d 1 hours more',
+    },
   ];
   return (
     <NativeBaseProvider theme={theme}>
       <>
         {data.map((pack, index) => (
-          <Box
-            bg={theme.colors.primary.default}
-            m='3'
-            rounded='xl'
-            _text={{
-              fontWeight: 'medium',
-              letterSpacing: 'lg',
-            }}>
+          <Box bg={theme.colors.primary.default} m='3' rounded='xl'>
             <Stack pl='4' space={2}>
               <Flex direction='row'>
                 <Flex direction='column'>
-                  <Text
-                    fontWeight='300'
-                    color='white'
-                    fontSize='md'
-                    ml='-0.5'
-                    mt='1'>
+                  <Text color='white' fontSize='md' ml='-0.5' mt='1'>
                     {pack.name}
                   </Text>
-                  <Text fontWeight='300' color='white' ml='-0.5' mb='1'>
+                  <Text color='white' ml='-0.5' mb='1'>
+                    <Icon
+                      as={<MaterialIcons name='bar-chart' />}
+                      size={3}
+                      px='1'
+                      color={theme.colors.primary.dark}
+                    />
                     {pack.data}
                   </Text>
-                  <Text fontWeight='300' color='white' ml='-0.5' mb='1'>
+                  <Text color='white' ml='-0.5' mb='1'>
+                    <Icon
+                      as={<MaterialIcons name='timer' />}
+                      size={3}
+                      px='1'
+                      color={theme.colors.primary.dark}
+                    />
                     {pack.hours}
                   </Text>
                 </Flex>
@@ -84,7 +90,7 @@ export default function MyPackages({ navigation }) {
             </Stack>
           </Box>
         ))}
-        <Box position='relative' h={100} w='100%'>
+        <Box position='relative' h={70} w='70%'>
           <Fab
             onPress={() => navigation.navigate('Add Package')}
             bg={theme.colors.primary.default}
