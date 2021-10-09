@@ -10,11 +10,12 @@ import {
   Flex,
   Spacer,
   Center,
+  CircularProgress,
 } from 'native-base';
 import theme from '../../config/theme';
 import Card from '../shared/Card';
 import { useState } from 'react';
-import CircularProgress from 'react-native-circular-progress-indicator';
+// import CircularProgress from 'react-native-circular-progress-indicator';
 
 export default function DataUsage({ navigation }) {
   const [groupValue, setGroupValue] = useState([]);
@@ -31,19 +32,24 @@ export default function DataUsage({ navigation }) {
           <Text bold fontSize="lg" w="100%" p={5}>
             Day Time Data
           </Text>
-          <Flex w="100%" p="5" align="center" justify="center" w="100%">
+          <Flex w="100%" align="center" justify="center" w="100%">
             <CircularProgress
-              radius={90}
-              value={35}
-              maxValue={75}
-              textColor="#222"
-              fontSize={20}
-              valueSuffix={'GB'}
-              inActiveStrokeColor={'#2ecc71'}
-              inActiveStrokeOpacity={0.2}
-              inActiveStrokeWidth={6}
-              duration={3000}
-            />
+              mt={6}
+              value={10}
+              size={200}
+              color="#5373E5"
+              thickness={20}
+              trackColor="#C4C4C4"
+            >
+              <Center>
+                <Text bold fontSize="sm" color="#283D87" >
+                  Total
+                </Text>
+                <Text bold fontSize="3xl" color="#283D87" >
+                  50 GB
+                </Text>
+              </Center>
+            </CircularProgress>
           </Flex>
           <Spacer />
           <Flex w="100%" direction="row" p="5" align="center" justify="center">
@@ -67,11 +73,11 @@ export default function DataUsage({ navigation }) {
                 bold
                 fontSize="2xl"
                 w="100%"
-                color={theme.colors.primary.default}
+                color="#636161"
               >
                 5.75 GB
               </Text>
-              <Center w="100%" color={theme.colors.primary.default}>
+              <Center w="100%" color="#636161">
                 Used data
               </Center>
             </Flex>

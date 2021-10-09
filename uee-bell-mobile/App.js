@@ -29,9 +29,9 @@ function App() {
             options={{ headerShown: false }}
           />
           <Stack.Screen name='Card Details' component={CardDetailsScreen} />
-          <Stack.Screen name='Extra Data' component={DataUsage} />
+          <Stack.Screen name='Extra Data' component={ExtraData} />
           <Stack.Screen name='Data Usage' component={DataUsage} />
-          <Stack.Screen name='Usage History' component={DataUsage} />
+          <Stack.Screen name='Usage History' component={DataUsageHistory} />
           <Stack.Screen name='Payment History' component={PaymentHistory} />
           <Stack.Screen name='Add Package' component={AddPackage} />
           <Stack.Screen name='Edit User Profile' component={EditUserProfile} />

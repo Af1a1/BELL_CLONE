@@ -9,6 +9,9 @@ import {
   Spacer,
   Button,
   List,
+  Center,
+  CircularProgress,
+  Pressable
 } from 'native-base';
 import { StyleSheet } from 'react-native';
 import { Fontisto, MaterialIcons } from '@expo/vector-icons';
@@ -52,7 +55,7 @@ function DataUsageHome({ navigation }) {
           md: '100%',
         }}
       >
-        <Card>
+        <Center>
           <Stack
             space={2.5}
             alignSelf="center"
@@ -64,8 +67,30 @@ function DataUsageHome({ navigation }) {
               md: '25%',
             }}
           >
+            <Center p={5}>
+              <Text fontSize="2xl" color="#283D87" mb={3}>
+                Total Data Usage
+              </Text>
+              <CircularProgress
+                mt={6}
+                value={10}
+                size={200}
+                color="#5373E5"
+                thickness={20}
+                trackColor="#C4C4C4"
+              >
+                <Center>
+                  <Text bold fontSize="sm" color="#283D87">
+                    Total
+                  </Text>
+                  <Text bold fontSize="3xl" color="#283D87">
+                    50 GB
+                  </Text>
+                </Center>
+              </CircularProgress>
+            </Center>
             <Box>
-              <Box>
+              <Box mb={5}>
                 <List
                   p={0}
                   m={0}
@@ -75,13 +100,12 @@ function DataUsageHome({ navigation }) {
                   w="100%"
                 >
                   {packages.map((packageItem, index) => (
-                    <List.Item
+                    <Pressable
                       key={index}
                       width="100%"
-                      margin={0}
-                      padding={0}
-                      justifyContent="center"
-
+                      onPress={() =>
+                        navigation.navigate('Data Usage', { packageItem })
+                      }
                     >
                       <Flex
                         direction="row"
@@ -113,36 +137,39 @@ function DataUsageHome({ navigation }) {
                             name="arrow-forward-ios"
                             size={32}
                             color="white"
-                            onPress={() => navigation.navigate('Data Usage', {packageItem})}
+                            
                           />
                         </Flex>
                       </Flex>
-                    </List.Item>
+                    </Pressable>
                   ))}
                 </List>
               </Box>
-              <Flex direction="row">
+              <Flex direction="row" align="center" justify="center">
                 <Spacer />
                 <Button
-                  size="sm"
                   my="3"
-                  variant="link"
-                  colorScheme={'default'}
+                  style={styles.cancle}
+                  variant="outline"
                   onPress={() => navigation.navigate('Usage History')}
+                  colorScheme="blue"
                 >
+                  <Text bold color={theme.colors.primary.dark}>
                   History
+                  </Text>
                 </Button>
                 <Spacer />
-                <CommonButton
-                  navigation={navigation}
-                  text="Extra Data"
-                  route="Extra Data"
-                />
+                <Button
+                  style={styles.btnExtra}
+                  onPress={() => navigation.navigate('Extra Data')}
+                >
+                  <Text style={styles.btnText}>Extra Data</Text>
+                </Button>
                 <Spacer />
               </Flex>
             </Box>
           </Stack>
-        </Card>
+        </Center>
       </ScrollView>
     </NativeBaseProvider>
   );
@@ -160,6 +187,30 @@ const styles = StyleSheet.create({
   },
   text: {
     color: '#fff',
+  },
+  btnExtra: {
+    width: 140,
+    height: 34,
+    backgroundImage: 'linear-gradient(90deg, #283D87 3.87%, #5373E5 97.42%)',
+    borderRadius: '20px',
+    transform: 'rotate(-0.09deg)',
+    boxShadow: '0px 2px 10px rgba(0, 0, 0, 0.25)',
+    margin: 0,
+  },
+  cancle: {
+    borderRadius: '20px',
+    height: 34,
+    width: 140,
+    borderColor: theme.colors.primary.dark,
+    margin: 0,
+  },
+  btnText: {
+    fontStyle: 'normal',
+    fontWeight: 'bold',
+    fontSize: 14,
+    lineHeight: 14,
+    textAlign: 'center',
+    color: '#F9F9F9',
   },
 });
 export default DataUsageHome;
