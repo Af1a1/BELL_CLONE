@@ -18,6 +18,7 @@ import { flex, right } from 'styled-system';
 import { useState } from 'react';
 export default function AddPackages({ navigation }) {
   const [showModal, setShowModal] = useState(false);
+  const [showModal2, setShowModal2] = useState(false);
   const data = [
     {
       name: 'Home Schooling & WFH',
@@ -123,6 +124,7 @@ export default function AddPackages({ navigation }) {
                   style={styles.button}
                   onPress={() => {
                     setShowModal(false);
+                    setShowModal2(true);
                   }}>
                   Add to bill
                 </Button>
@@ -132,6 +134,26 @@ export default function AddPackages({ navigation }) {
                     setShowModal(false);
                   }}>
                   Pay now
+                </Button>
+              </Button.Group>
+            </Modal.Footer>
+          </Modal.Content>
+        </Modal>
+        <Modal isOpen={showModal2} onClose={() => setShowModal2(false)}>
+          <Modal.Content maxWidth='400px'>
+            <Modal.CloseButton />
+            <Modal.Header>Added Successfully</Modal.Header>
+            <Modal.Body>
+              The amount have added to your monthly bill successfully.
+            </Modal.Body>
+            <Modal.Footer>
+              <Button.Group space={5}>
+                <Button
+                  style={styles.button}
+                  onPress={() => {
+                    setShowModal2(false);
+                  }}>
+                  Back
                 </Button>
               </Button.Group>
             </Modal.Footer>
