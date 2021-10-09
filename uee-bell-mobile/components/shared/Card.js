@@ -1,18 +1,11 @@
 import React from 'react';
-import { Box, View } from "native-base";
+import { Box, View } from 'native-base';
 import { StyleSheet } from 'react-native';
-import { maxWidth, minHeight } from "styled-system";
-import center from "native-base/src/theme/components/center";
+import { maxWidth, minHeight } from 'styled-system';
+import center from 'native-base/src/theme/components/center';
 
-const Card = ({ height, width,  border, children}) => {
-
-  return (
-    <Box
-      style={styles.container}
-    >
-      { children }
-    </Box>
-  );
+const Card = ({ height, width, border, children }) => {
+  return <Box style={styles.container}>{children}</Box>;
 };
 
 const styles = StyleSheet.create({
@@ -29,6 +22,5 @@ const styles = StyleSheet.create({
     transform: 'matrix(1, 0, 0, 1, 0, 0)',
   },
 });
-
 
 export default Card;
