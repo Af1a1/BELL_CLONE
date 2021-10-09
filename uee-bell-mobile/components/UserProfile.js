@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import theme from '../config/theme';
 import {
   Box,
@@ -14,8 +14,7 @@ import {
   Image,
   Button,
 } from 'native-base';
-import { StyleSheet } from 'react-native';
-import { View } from 'react-native';
+import { Alert, Modal, StyleSheet, View, Pressable } from 'react-native';
 import { borderRadius, maxWidth, minHeight } from 'styled-system';
 import center from 'native-base/src/theme/components/center';
 import CommonButton from './shared/CommonButton';
@@ -25,7 +24,8 @@ import {
   MaterialIcons,
 } from '@expo/vector-icons';
 
-const UserProfile = () => {
+const UserProfile = ({ navigation }) => {
+  const [modalVisible, setModalVisible] = useState(false);
   return (
     <NativeBaseProvider theme={theme}>
       <ScrollView
@@ -58,7 +58,12 @@ const UserProfile = () => {
                 resizeMode='cover'
                 source={require('../assets/profile.jpg')}
               />
-              <View>
+              <View
+                style={{
+                  width: '40%',
+                  marginLeft: '30px',
+                  marginRight: '30px',
+                }}>
                 <Text
                   align='center'
                   textAlign='center'
@@ -69,11 +74,9 @@ const UserProfile = () => {
                   style={{
                     borderBottomColor: '#F9F9F9',
                     borderBottomWidth: 1,
-                    width: '150px',
+                    width: '100%',
                     marginTop: '8px',
                     marginBottom: '5px',
-                    marginLeft: '30px',
-                    marginRight: '30px',
                   }}
                 />
                 <Text textAlign='center' style={styles.names}>
@@ -318,7 +321,9 @@ const UserProfile = () => {
                 }}
               />
 
-              <Button style={styles.btn}>
+              <Button
+                style={styles.btn}
+                onPress={() => navigation.navigate('Edit User Profile')}>
                 <Text style={styles.btnText}>Edit Profile</Text>
               </Button>
             </View>
@@ -401,7 +406,9 @@ const UserProfile = () => {
                 }}
               />
 
-              <Button style={styles.btn}>
+              <Button
+                style={styles.btn}
+                onPress={() => navigation.navigate('Edit Login Details')}>
                 <Text style={styles.btnText}>Change Password</Text>
               </Button>
             </View>

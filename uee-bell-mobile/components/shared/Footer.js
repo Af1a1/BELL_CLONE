@@ -8,7 +8,7 @@ import PaymentScreen from '../PaymentScreen';
 import UserProfile from '../UserProfile';
 import AddPackages from '../AddPackage';
 import MyPackages from '../MyPackages';
-import DataUsageHome from "../DataUsage/DataUsageHome";
+import DataUsageHome from '../DataUsage/DataUsageHome';
 const Tab = createBottomTabNavigator();
 
 export default function Footer() {
@@ -57,12 +57,14 @@ export default function Footer() {
           tabBarInactiveBackgroundColor: theme.colors.primary.default,
           tabBarInactiveTintColor: theme.colors.primary.light,
           tabBarShowLabel: true,
-        })}
-      >
-        <Tab.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
-        <Tab.Screen name="Payment" component={PaymentScreen} />
-        <Tab.Screen name="Usage" component={DataUsageHome} />
-        <Tab.Screen name="AddOn" component={PaymentScreen} />
+        })}>
+        <Tab.Screen
+          name='Home'
+          component={HomeScreen}
+          options={{ headerShown: false }}
+        />
+        <Tab.Screen name='Payment' component={PaymentScreen} />
+        <Tab.Screen name='Usage' component={DataUsageHome} />
         <Tab.Screen name='My Packages' component={MyPackages} />
         <Tab.Screen name='Profile' component={UserProfile} />
       </Tab.Navigator>
