@@ -8,6 +8,9 @@ import ExtraData from './components/DataUsage/ExtraData';
 import DataUsageHistory from './components/DataUsage/DataUsageHistory';
 import PaymentHistory from "./components/PaymentHistory";
 import AddPackage from './components/AddPackage';
+import EditLoginDetails from './components/EditLoginDetails';
+import EditUserProfile from './components/EditUserProfile';
+
 function App() {
   const Stack = createNativeStackNavigator();
   return (
@@ -25,6 +28,11 @@ function App() {
           <Stack.Screen name="Usage History" component={DataUsageHistory} />
           <Stack.Screen name="Payment History" component={PaymentHistory} />
           <Stack.Screen name='Add Package' component={AddPackage} />
+          <Stack.Screen name='Edit User Profile' component={EditUserProfile} />
+          <Stack.Screen
+            name='Edit Login Details'
+            component={EditLoginDetails}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </>

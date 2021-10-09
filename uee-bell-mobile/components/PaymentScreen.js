@@ -130,7 +130,7 @@ export default function PaymentScreen({ navigation }) {
               <CommonButton
                 navigation={navigation}
                 text='Pay Now'
-                route='Payment History'
+                route='Card Details'
               />
             </Box>
           </Stack>

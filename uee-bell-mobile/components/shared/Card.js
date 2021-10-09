@@ -1,8 +1,8 @@
 import React from 'react';
-import { Box, View } from "native-base";
+import { Box, View } from 'native-base';
 import { StyleSheet } from 'react-native';
-import { maxWidth, minHeight } from "styled-system";
-import center from "native-base/src/theme/components/center";
+import { maxWidth, minHeight } from 'styled-system';
+import center from 'native-base/src/theme/components/center';
 
 const Card = ({ height, width, padding, margin,  border, children}) => {
 console.log("🚀 ~ file: Card.js ~ line 8 ~ Card ~ padding", padding)
@@ -30,7 +30,6 @@ console.log("🚀 ~ file: Card.js ~ line 8 ~ Card ~ padding", padding)
     </Box>
   );
 };
-
 
 
 
