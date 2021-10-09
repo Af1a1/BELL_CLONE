@@ -8,16 +8,23 @@ import PaymentHistory from './components/PaymentHistory';
 import AddPackage from './components/AddPackage';
 import EditLoginDetails from './components/EditLoginDetails';
 import EditUserProfile from './components/EditUserProfile';
-
+import Login from './components/Login';
 function App() {
   const Stack = createNativeStackNavigator();
   return (
     <>
+      {/* <Login /> */}
       <NavigationContainer>
-        <Stack.Navigator>
+        <Stack.Navigator initialRouteName='Login'>
           <Stack.Screen
             name='Footer'
             component={Footer}
+            options={{ headerShown: false }}
+          />
+
+          <Stack.Screen
+            name='Login'
+            component={Login}
             options={{ headerShown: false }}
           />
           <Stack.Screen name='Card Details' component={CardDetailsScreen} />
