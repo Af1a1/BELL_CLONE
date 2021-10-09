@@ -4,6 +4,7 @@ import Footer from "./components/shared/Footer";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import CardDetailsScreen from "./components/CardDetailsScreen";
 import DataUsage from './components/DataUsage/DataUsage';
+import ExtraData from './components/DataUsage/ExtraData';
 import DataUsageHistory from './components/DataUsage/DataUsageHistory';
 import PaymentHistory from "./components/PaymentHistory";
 import AddPackage from './components/AddPackage';
@@ -19,7 +20,7 @@ function App() {
             options={{ headerShown: false }}
           />
           <Stack.Screen name="Card Details" component={CardDetailsScreen} />
-          <Stack.Screen name="Extra Data" component={DataUsage} />
+          <Stack.Screen name="Extra Data" component={ExtraData} />
           <Stack.Screen name="Data Usage" component={DataUsage} />
           <Stack.Screen name="Usage History" component={DataUsageHistory} />
           <Stack.Screen name="Payment History" component={PaymentHistory} />
