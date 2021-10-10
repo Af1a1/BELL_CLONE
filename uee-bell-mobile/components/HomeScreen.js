@@ -12,6 +12,7 @@ import {
   Spacer,
   VStack,
   Pressable,
+  List,
 } from 'native-base';
 import theme from '../config/theme';
 import Card from './shared/Card';
@@ -27,6 +28,38 @@ import {
 } from '@expo/vector-icons';
 
 export default function HomeScreen({ navigation }) {
+  const getIcon = (iconName) => {
+    switch (iconName) {
+      case 'night-clear':
+        return <Fontisto name="night-clear" size={24} color="white" />;
+      default:
+        return <Fontisto name="day-sunny" size={32} color="white" />;
+    }
+  };
+  
+  const packages = [
+    {
+      packageName: 'Day Time',
+      remainingData: 31.56,
+      remainingDataMetix: 'GB',
+      validtoDateTime: '01/09/2021 12.00 AM',
+      validFromDateTime: '01/10/2021 12.00 AM',
+      iconName: 'day-sunny',
+      total: 35,
+      today: 1.76,
+    },
+    {
+      packageName: 'Night Time',
+      remainingData: 11.03,
+      remainingDataMetix: 'GB',
+      validtoDateTime: '01/09/2021 12.00 AM',
+      validFromDateTime: '01/10/2021 12.00 AM',
+      iconName: 'night-clear',
+      total: 35,
+      today: 0.8,
+    },
+  ];
+
   return (
     <NativeBaseProvider theme={theme}>
       <HStack>
@@ -99,69 +132,58 @@ export default function HomeScreen({ navigation }) {
             >
               <Box>
                 <Box>
-                  <Pressable 
-                    onPress={() =>
-                      navigation.navigate('Data Usage')
-                    }
+                  <List
+                    p={0}
+                    m={0}
+                    // borderColor="red.200"
+                    borderWidth={0}
+                    borderRightWidth={0}
+                    w="100%"
                   >
-                    <Flex
-                      direction="row"
-                      bg={theme.colors.primary.default}
-                      style={styles.card}
-                      mb={2}
-                    >
-                      <Box>
-                        <Text style={styles.text} fontSize="md">
-                          Free Data
-                        </Text>
-                        <Text style={styles.text} fontSize="2xl" bold>
-                          31.56 GB
-                        </Text>
-                        <Text style={styles.text} fontSize="xs">
-                          Valid until 01/10/2021 12:00 AM
-                        </Text>
-                      </Box>
-                      <Spacer />
-                      <Flex direction="column" align="center" justify="center">
-                        <Fontisto name="night-clear" size={24} color="white" />
-                        <Spacer />
-                        <MaterialIcons
-                          name="arrow-forward-ios"
-                          size={32}
-                          color="white"
-                        />
-                      </Flex>
-                    </Flex>
-                  </Pressable>
-                  <Pressable>
-                    <Flex
-                      direction="row"
-                      bg={theme.colors.primary.default}
-                      style={styles.card}
-                    >
-                      <Box>
-                        <Text style={styles.text} fontSize="md">
-                          Standard Data
-                        </Text>
-                        <Text style={styles.text} fontSize="2xl" bold>
-                          31.56 GB
-                        </Text>
-                        <Text style={styles.text} fontSize="xs">
-                          Valid until 01/10/2021 12:00 AM
-                        </Text>
-                      </Box>
-                      <Spacer />
-                      <Flex direction="column" align="center" justify="center">
-                        <Fontisto name="day-sunny" size={32} color="white" />
-                        <Spacer />
-                        <MaterialIcons
-                          name="arrow-forward-ios"
-                          size={32}
-                          color="white"
-                        />
-                      </Flex>
-                    </Flex>
-                  </Pressable>
+                    {packages.map((packageItem, index) => (
+                      <Pressable
+                        key={index}
+                        width="100%"
+                        onPress={() =>
+                          navigation.navigate('Data Usage', { packageItem })
+                        }
+                      >
+                        <Flex
+                          direction="row"
+                          bg={theme.colors.primary.default}
+                          style={styles.card}
+                          width="100%"
+                          mb={2}
+                        >
+                          <Box>
+                            <Text style={styles.text} fontSize="md">
+                              {packageItem.packageName}
+                            </Text>
+                            <Text style={styles.text} fontSize="2xl" bold>
+                              {packageItem.remainingData}
+                            </Text>
+                            <Text style={styles.text} fontSize="xs">
+                              Valid until {packageItem.validtoDateTime}
+                            </Text>
+                          </Box>
+                          <Spacer />
+                          <Flex
+                            direction="column"
+                            align="center"
+                            justify="center"
+                          >
+                            {getIcon(packageItem.iconName)}
+                            <Spacer />
+                            <MaterialIcons
+                              name="arrow-forward-ios"
+                              size={32}
+                              color="white"
+                            />
+                          </Flex>
+                        </Flex>
+                      </Pressable>
+                    ))}
+                  </List>
                 </Box>
                 <Flex direction="row">
                   <Button
@@ -191,7 +213,7 @@ export default function HomeScreen({ navigation }) {
                   /> */}
                   <Button
                     style={styles.btnExtra}
-                    onPress={() => navigation.navigate('Data Usage')}
+                    onPress={() => navigation.navigate('Extra Data')}
                   >
                     <Text style={styles.btnText}>Extra Data</Text>
                   </Button>

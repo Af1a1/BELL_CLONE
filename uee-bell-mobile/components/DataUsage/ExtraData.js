@@ -12,6 +12,7 @@ import {
   Center,
   Slider,
   Button,
+  Modal,
 } from 'native-base';
 import { StyleSheet } from 'react-native';
 import { flex, right } from 'styled-system';
@@ -24,8 +25,11 @@ import CircularProgress from 'react-native-circular-progress-indicator';
 
 export default function DataUsage({ navigation }) {
   const [groupValue, setGroupValue] = useState([]);
-  const [onChangeValue, setOnChangeValue] = useState(70);
-  const [onChangeEndValue, setOnChangeEndValue] = useState(70);
+  const [onChangeEndValue, setOnChangeEndValue] = useState(12.5);
+  const [dataAmount, setDataAmount] = useState(1);
+  const [price, setPrice] = useState(100);
+  const [showModal, setShowModal] = useState(false);
+  const [showModal2, setShowModal2] = useState(false);
 
   return (
     <NativeBaseProvider theme={theme}>
@@ -41,13 +45,58 @@ export default function DataUsage({ navigation }) {
           </Text>
           <Flex w="100%" p="5" px={7} align="center" justify="center" w="100%">
             <Slider
-              defaultValue={70}
-              colorScheme="cyan"
+              value={onChangeEndValue}
+              defaultValue={onChangeEndValue}
+              colorScheme="blue"
               onChange={(v) => {
-                setOnChangeValue(Math.floor(v));
+                setOnChangeEndValue(Math.floor(v));
               }}
               onChangeEnd={(v) => {
-                v && setOnChangeEndValue(Math.floor(v));
+                let val;
+                if (Math.floor(v) < 12.5) val = 12.5;
+                else if (Math.floor(v) < 25) val = 25;
+                else if (Math.floor(v) < 37.5) val = 37.5;
+                else if (Math.floor(v) < 50) val = 50;
+                else if (Math.floor(v) < 62.5) val = 62.5;
+                else if (Math.floor(v) < 75) val = 75;
+                else if (Math.floor(v) < 87.5) val = 87.5;
+                else val = 100;
+                setOnChangeEndValue(val);
+
+                switch (val) {
+                  case 12.5:
+                    setDataAmount(1);
+                    setPrice(100);
+                    break;
+                  case 25:
+                    setDataAmount(2);
+                    setPrice(200);
+                    break;
+                  case 37.5:
+                    setDataAmount(4);
+                    setPrice(300);
+                    break;
+                  case 50:
+                    setDataAmount(5);
+                    setPrice(400);
+                    break;
+                  case 62.5:
+                    setDataAmount(10);
+                    setPrice(500);
+                    break;
+                  case 75:
+                    setDataAmount(15);
+                    setPrice(600);
+                    break;
+                  case 87.5:
+                    setDataAmount(20);
+                    setPrice(700);
+                    break;
+                  default:
+                    setDataAmount(25);
+                    setPrice(800);
+                    break;
+                }
               }}
             >
               <Slider.Track>
@@ -55,6 +104,25 @@ export default function DataUsage({ navigation }) {
               </Slider.Track>
               <Slider.Thumb />
             </Slider>
+            <Flex w="100%" align="center" direction="row" w="100%">
+              <Text>GB</Text>
+              <Spacer />
+              <Text>1</Text>
+              <Spacer />
+              <Text>2</Text>
+              <Spacer />
+              <Text>4</Text>
+              <Spacer />
+              <Text>5</Text>
+              <Spacer />
+              <Text>10</Text>
+              <Spacer />
+              <Text>15</Text>
+              <Spacer />
+              <Text>20</Text>
+              <Spacer />
+              <Text>25</Text>
+            </Flex>
           </Flex>
           <Spacer />
           <Flex
@@ -74,7 +142,7 @@ export default function DataUsage({ navigation }) {
                 color={theme.colors.primary.dark}
                 // lineHeight="xs"
               >
-                4 GB
+                {dataAmount} GB
               </Text>
               <Center w="100%">
                 <Text fontSize="sm" color={theme.colors.primary.dark}>
@@ -95,7 +163,7 @@ export default function DataUsage({ navigation }) {
                   // lineHeight="xs"
                   align="center"
                 >
-                  Rs. 400
+                  Rs. {price}
                 </Text>
               </Center>
               <Center w="100%">
@@ -120,19 +188,79 @@ export default function DataUsage({ navigation }) {
               onPress={() => navigation.goBack()}
               colorScheme="blue"
             >
-              <Text bold color={theme.colors.primary.dark}>Cancle</Text>
+              <Text bold color={theme.colors.primary.dark}>
+                Cancle
+              </Text>
             </Button>
             <Spacer />
             <Button
               my="3"
               style={styles.success}
               // onPress={() => navigation.navigate(route)}
+              onPress={() => {
+                setShowModal(true);
+              }}
             >
               Add
             </Button>
           </Flex>
         </VStack>
       </ScrollView>
+      <Modal isOpen={showModal} onClose={() => setShowModal(false)}>
+        <Modal.Content maxWidth="400px">
+          <Modal.CloseButton />
+          <Modal.Header>Add Extra Data</Modal.Header>
+          <Modal.Body>
+            Are you sure you want to Add this Extra Data ?
+          </Modal.Body>
+          <Modal.Footer>
+            <Button.Group space={5}>
+              <Button
+                style={styles.buttonCancle}
+                variant="outline"
+                onPress={() => {
+                  setShowModal(false);
+                }}
+              >
+                <Text bold color={theme.colors.primary.dark}>
+                  No
+                </Text>
+              </Button>
+              <Button
+                style={styles.button}
+                onPress={() => {
+                  setShowModal(false);
+                  setShowModal2(true);
+                }}
+              >
+                Yes
+              </Button>
+            </Button.Group>
+          </Modal.Footer>
+        </Modal.Content>
+      </Modal>
+      <Modal isOpen={showModal2} onClose={() => setShowModal2(false)}>
+        <Modal.Content maxWidth="400px">
+          <Modal.CloseButton />
+          <Modal.Header>Added Successfully</Modal.Header>
+          <Modal.Body>
+            Your have been Successfully Added new Extra Data
+          </Modal.Body>
+          <Modal.Footer>
+            <Button.Group space={5}>
+              <Button
+                style={styles.button}
+                onPress={() => {
+                  setShowModal2(false);
+                  navigation.goBack();
+                }}
+              >
+                Ok
+              </Button>
+            </Button.Group>
+          </Modal.Footer>
+        </Modal.Content>
+      </Modal>
     </NativeBaseProvider>
   );
 }
@@ -154,5 +282,23 @@ const styles = StyleSheet.create({
     boxShadow: '0px 2px 10px rgba(0, 0, 0, 0.25)',
     borderRadius: '20px',
     transform: 'matrix(1, 0, 0, 1, 0, 0)',
+  },
+  button: {
+    float: right,
+    align: right,
+    display: flex,
+    padding: 10,
+    backgroundImage: 'linear-gradient(90deg, #283D87 3.87%, #5373E5 97.42%)',
+    boxShadow: '0px 2px 10px rgba(0, 0, 0, 0.25)',
+    borderRadius: '20px',
+    transform: 'matrix(1, 0, 0, 1, 0, 0)',
+  },
+  buttonCancle: {
+    float: right,
+    align: right,
+    display: flex,
+    borderRadius: '20px',
+    padding: 10,
+    borderColor: theme.colors.primary.dark,
   },
 });

@@ -36,15 +36,23 @@ function DataUsageHome({ navigation }) {
   const packages = [
     {
       packageName: 'Day Time',
-      remainingData: '31.56 GB',
-      validDateTime: '01/10/2021 12.00 AM',
+      remainingData: 31.56,
+      remainingDataMetix: 'GB',
+      validtoDateTime: '01/09/2021 12.00 AM',
+      validFromDateTime: '01/10/2021 12.00 AM',
       iconName: 'day-sunny',
+      total: 35,
+      today: 1.76,
     },
     {
       packageName: 'Night Time',
-      remainingData: '11.03 GB',
-      validDateTime: '01/10/2021 12.00 AM',
+      remainingData: 11.03,
+      remainingDataMetix: 'GB',
+      validtoDateTime: '01/09/2021 12.00 AM',
+      validFromDateTime: '01/10/2021 12.00 AM',
       iconName: 'night-clear',
+      total: 35,
+      today: 0.80,
     },
   ];
   return (
@@ -116,13 +124,13 @@ function DataUsageHome({ navigation }) {
                       >
                         <Box>
                           <Text style={styles.text} fontSize="md">
-                            Free Data
+                            {packageItem.packageName}
                           </Text>
                           <Text style={styles.text} fontSize="2xl" bold>
-                            31.56 GB
+                          {packageItem.remainingData}
                           </Text>
                           <Text style={styles.text} fontSize="xs">
-                            Valid until 01/10/2021 12:00 AM
+                            Valid until {packageItem.validtoDateTime}
                           </Text>
                         </Box>
                         <Spacer />

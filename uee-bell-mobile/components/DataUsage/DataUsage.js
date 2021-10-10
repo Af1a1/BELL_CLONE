@@ -17,7 +17,9 @@ import Card from '../shared/Card';
 import { useState } from 'react';
 // import CircularProgress from 'react-native-circular-progress-indicator';
 
-export default function DataUsage({ navigation }) {
+export default function DataUsage(props) {
+  const { navigation, route } = props;
+  const packageItem = route.params.packageItem;
   const [groupValue, setGroupValue] = useState([]);
 
   return (
@@ -30,12 +32,12 @@ export default function DataUsage({ navigation }) {
       >
         <VStack space={4} alignItems="center">
           <Text bold fontSize="lg" w="100%" p={5}>
-            Day Time Data
+            {packageItem.packageName}
           </Text>
           <Flex w="100%" align="center" justify="center" w="100%">
             <CircularProgress
               mt={6}
-              value={10}
+              value={((packageItem.remainingData / packageItem.total) * 100).toFixed(2)}
               size={200}
               color="#5373E5"
               thickness={20}
@@ -46,7 +48,7 @@ export default function DataUsage({ navigation }) {
                   Total
                 </Text>
                 <Text bold fontSize="3xl" color="#283D87" >
-                  50 GB
+                {packageItem.total} GB
                 </Text>
               </Center>
             </CircularProgress>
@@ -61,7 +63,7 @@ export default function DataUsage({ navigation }) {
                 fontSize="2xl"
                 color={theme.colors.primary.dark}
               >
-                35.75 GB
+                {packageItem.remainingData} {packageItem.remainingDataMetix}
               </Text>
               <Center w="100%" color={theme.colors.primary.dark}>
                 Remaining data
@@ -75,7 +77,7 @@ export default function DataUsage({ navigation }) {
                 w="100%"
                 color="#636161"
               >
-                5.75 GB
+                {(packageItem.total - packageItem.remainingData).toFixed(2)} GB
               </Text>
               <Center w="100%" color="#636161">
                 Used data
@@ -88,13 +90,13 @@ export default function DataUsage({ navigation }) {
               <Text bold fontSize="lg">
                 Valid Period
               </Text>
-              <Text fontSize="md">From 01/10/2021 - To 01/10/2021</Text>
+              <Text fontSize="md">From {packageItem.validFromDateTime.split(' ')[0]} - To {packageItem.validtoDateTime.split(' ')[0]}</Text>
             </Card>
             <Card>
               <Text bold fontSize="lg">
                 Today Usage
               </Text>
-              <Text fontSize="md">1.75 GB</Text>
+              <Text fontSize="md">{packageItem.today} GB</Text>
             </Card>
           </Box>
         </VStack>
