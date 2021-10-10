@@ -3,9 +3,7 @@ import {
   Box,
   NativeBaseProvider,
   ScrollView,
-  Stack,
   Text,
-  Checkbox,
   VStack,
   Flex,
   Spacer,
@@ -15,7 +13,6 @@ import {
 import theme from '../../config/theme';
 import Card from '../shared/Card';
 import { useState } from 'react';
-// import CircularProgress from 'react-native-circular-progress-indicator';
 
 export default function DataUsage(props) {
   const { navigation, route } = props;

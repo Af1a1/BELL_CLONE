@@ -3,9 +3,7 @@ import {
   Box,
   NativeBaseProvider,
   ScrollView,
-  Stack,
   Text,
-  Checkbox,
   VStack,
   Flex,
   Spacer,
@@ -17,11 +15,8 @@ import {
 import { StyleSheet } from 'react-native';
 import { flex, right } from 'styled-system';
 import theme from '../../config/theme';
-import CommonButton from '../shared/CommonButton';
-import Card from '../shared/Card';
 import { useState } from 'react';
 import { AntDesign } from '@expo/vector-icons';
-import CircularProgress from 'react-native-circular-progress-indicator';
 
 export default function DataUsage({ navigation }) {
   const [groupValue, setGroupValue] = useState([]);
